@@ -7,6 +7,7 @@
 #include <QNetworkInterface>
 #include <QProcess>
 #include <QFileDialog>
+#include <QColorDialog>
 #include "qq_server.h"
 #include "qq_client.h"
 
@@ -23,6 +24,7 @@ Widget::Widget(QWidget *parent, QString user_name) :
     SendMsg(UsrEnter);
     srv_ = new Server(this);
     connect(srv_, SIGNAL(SendFileName(QString)), this, SLOT(GetFileName(QString)));
+    connect(ui->msg_txt_edit_, SIGNAL(currentCharFormatChanged(QTextCharFormat)), this, SLOT(CurrentFormatChanged(QTextCharFormat)));
 }
 
 Widget::~Widget()
@@ -225,4 +227,109 @@ void Client::SetHostAddr(QHostAddress addr)
 {
     host_addr_ = addr;
     NewConn();
+}
+
+void Widget::on_font_cbx__currentFontChanged(const QFont &f)
+{
+    ui->msg_txt_edit_->setCurrentFont(f);
+    ui->msg_txt_edit_->setFocus();
+}
+
+void Widget::on_size_cbx__currentIndexChanged(const QString &arg1)
+{
+    ui->msg_txt_edit_->setFontPointSize(arg1.toDouble());
+    ui->msg_txt_edit_->setFocus();
+}
+
+void Widget::on_bold_btn__clicked(bool checked)
+{
+    if (checked)
+        ui->msg_txt_edit_->setFontWeight(QFont::Bold);
+    else
+        ui->msg_txt_edit_->setFontWeight(QFont::Normal);
+    ui->msg_txt_edit_->setFocus();
+}
+
+void Widget::on_italic_btn__clicked(bool checked)
+{
+    ui->msg_txt_edit_->setFontItalic(checked);
+    ui->msg_txt_edit_->setFocus();
+}
+
+void Widget::on_under_btn__clicked(bool checked)
+{
+    ui->msg_txt_edit_->setFontUnderline(checked);
+    ui->msg_txt_edit_->setFocus();
+}
+
+void Widget::on_color_btn__clicked()
+{
+    color_ = QColorDialog::getColor(color_, this);
+    if (color_.isValid())
+    {
+        ui->msg_txt_edit_->setTextColor(color_);
+        ui->msg_txt_edit_->setFocus();
+    }
+}
+
+void Widget::CurrentFormatChanged(const QTextCharFormat &fmt)
+{
+    ui->font_cbx_->setCurrentFont(fmt.font());
+    if (fmt.fontPointSize() < 8)
+    {
+        ui->size_cbx_->setCurrentIndex(4);
+    }
+    else
+    {
+        ui->size_cbx_->setCurrentIndex(ui->size_cbx_->findText(QString::number(fmt.fontPointSize())));
+    }
+    ui->bold_btn_->setChecked(fmt.font().bold());
+    ui->italic_btn_->setChecked(fmt.font().italic());
+    ui->under_btn_->setChecked(fmt.font().underline());
+    color_ = fmt.foreground().color();
+}
+
+void Widget::on_save_file_btn__clicked()
+{
+    if (ui->msg_txt_browser_->document()->isEmpty())
+    {
+        QMessageBox::warning(0, tr("Warning"), tr("Chat log is empty."), QMessageBox::Ok);
+    }
+    else
+    {
+        QString fname = QFileDialog::getSaveFileName(this, tr("Save chat log"), tr("Chat log"), tr("file(*.txt);;all file(*.*)"));
+        if (!fname.isEmpty())
+        {
+            SaveFile(fname);
+        }
+    }
+}
+
+bool Widget::SaveFile(const QString &file_name)
+{
+    QFile file(file_name);
+    if (!file.open(QFile::WriteOnly | QFile::Text))
+    {
+        QMessageBox::warning(this, tr("Save file"), tr("Can't save file %1:\n %2").arg(file_name).arg(file.errorString()));
+        return false;
+    }
+    QTextStream out(&file);
+    out << ui->msg_txt_browser_->toPlainText();
+    return true;
+}
+
+void Widget::on_clear_btn__clicked()
+{
+    ui->msg_txt_browser_->clear();
+}
+
+void Widget::on_exit_btn__clicked()
+{
+    close();
+}
+
+void Widget::closeEvent(QCloseEvent *e)
+{
+    SendMsg(UsrLeft);
+    QWidget::closeEvent(e);
 }
