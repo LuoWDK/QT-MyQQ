@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Bat-icon.png</file>
+        <file>images/broom-icon.png</file>
+        <file>images/Capt-Spaulding-icon.png</file>
+        <file>images/Casper-icon.png</file>
+        <file>images/Chuckie-icon.png</file>
+        <file>images/Colors-icon.png</file>
+        <file>images/Dave-icon.png</file>
+        <file>images/Devil-icon.png</file>
+        <file>images/Diablo-icon.png</file>
+        <file>images/Dracula-icon.png</file>
+        <file>images/Frankenstein-icon.png</file>
+        <file>images/Freddie-icon.png</file>
+        <file>images/save-diskette-floppy-disk-icon.png</file>
+        <file>images/Send-Document-icon.png</file>
+        <file>images/text-bold-icon.png</file>
+        <file>images/text-italic-icon.png</file>
+        <file>images/text-underline-icon.png</file>
+        <file>images/qq-icon.png</file>
+    </qresource>
+</RCC>
