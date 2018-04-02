@@ -11,7 +11,6 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f)
     tool_btn_1_ = new QToolButton;
     tool_btn_1_->setText(tr("Bat"));
     tool_btn_1_->setIcon(QPixmap(":/images/Bat-icon.png"));
-//    tool_btn_1_->setIconSize(QPixmap(":/images/Bat-icon.png").size());
     tool_btn_1_->setAutoRaise(true);
     tool_btn_1_->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(tool_btn_1_, SIGNAL(clicked()), this, SLOT(ShowChatWidget1()));
@@ -19,7 +18,6 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f)
     tool_btn_2_ = new QToolButton;
     tool_btn_2_->setText(tr("Capt. Spaulding"));
     tool_btn_2_->setIcon(QPixmap(":/images/Capt-Spaulding-icon.png"));
-//    tool_btn_2_->setIconSize(QPixmap(":/images/Capt-Spaulding-icon.png").size());
     tool_btn_2_->setAutoRaise(true);
     tool_btn_2_->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(tool_btn_2_, SIGNAL(clicked()), this, SLOT(ShowChatWidget2()));
@@ -27,7 +25,6 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f)
     tool_btn_3_ = new QToolButton;
     tool_btn_3_->setText(tr("Casper"));
     tool_btn_3_->setIcon(QPixmap(":/images/Casper-icon.png"));
-//    tool_btn_3_->setIconSize(QPixmap(":/images/Casper-icon.png").size());
     tool_btn_3_->setAutoRaise(true);
     tool_btn_3_->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(tool_btn_3_, SIGNAL(clicked()), this, SLOT(ShowChatWidget3()));
@@ -35,7 +32,6 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f)
     tool_btn_4_ = new QToolButton;
     tool_btn_4_->setText(tr("Chuckie"));
     tool_btn_4_->setIcon(QPixmap(":/images/Chuckie-icon.png"));
-//    tool_btn_4_->setIconSize(QPixmap(":/images/Chuckie-icon.png").size());
     tool_btn_4_->setAutoRaise(true);
     tool_btn_4_->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(tool_btn_4_, SIGNAL(clicked()), this, SLOT(ShowChatWidget4()));
@@ -43,7 +39,6 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f)
     tool_btn_5_ = new QToolButton;
     tool_btn_5_->setText(tr("Dave"));
     tool_btn_5_->setIcon(QPixmap(":/images/Dave-icon.png"));
-//    tool_btn_5_->setIconSize(QPixmap(":/images/Dave-icon.png").size());
     tool_btn_5_->setAutoRaise(true);
     tool_btn_5_->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(tool_btn_5_, SIGNAL(clicked()), this, SLOT(ShowChatWidget5()));
@@ -51,7 +46,6 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f)
     tool_btn_6_ = new QToolButton;
     tool_btn_6_->setText(tr("Devil"));
     tool_btn_6_->setIcon(QPixmap(":/images/Devil-icon.png"));
-//    tool_btn_6_->setIconSize(QPixmap(":/images/Devil-icon.png").size());
     tool_btn_6_->setAutoRaise(true);
     tool_btn_6_->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(tool_btn_6_, SIGNAL(clicked()), this, SLOT(ShowChatWidget6()));
@@ -59,7 +53,6 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f)
     tool_btn_7_ = new QToolButton;
     tool_btn_7_->setText(tr("Diablo"));
     tool_btn_7_->setIcon(QPixmap(":/images/Diablo-icon.png"));
-//    tool_btn_7_->setIconSize(QPixmap(":/images/Diablo-icon.png").size());
     tool_btn_7_->setAutoRaise(true);
     tool_btn_7_->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(tool_btn_7_, SIGNAL(clicked()), this, SLOT(ShowChatWidget7()));
@@ -67,7 +60,6 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f)
     tool_btn_8_ = new QToolButton;
     tool_btn_8_->setText(tr("Dracula"));
     tool_btn_8_->setIcon(QPixmap(":/images/Dracula-icon.png"));
-//    tool_btn_8_->setIconSize(QPixmap(":/images/Dracula-icon.png").size());
     tool_btn_8_->setAutoRaise(true);
     tool_btn_8_->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(tool_btn_8_, SIGNAL(clicked()), this, SLOT(ShowChatWidget8()));
@@ -75,7 +67,6 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f)
     tool_btn_9_ = new QToolButton;
     tool_btn_9_->setText(tr("Frankenstein"));
     tool_btn_9_->setIcon(QPixmap(":/images/Frankenstein-icon.png"));
-//    tool_btn_9_->setIconSize(QPixmap(":/images/Frankenstein-icon.png").size());
     tool_btn_9_->setAutoRaise(true);
     tool_btn_9_->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(tool_btn_9_, SIGNAL(clicked()), this, SLOT(ShowChatWidget9()));

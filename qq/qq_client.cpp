@@ -116,3 +116,14 @@ void Client::closeEvent(QCloseEvent *)
 {
     on_close_btn__clicked();
 }
+
+void Client::SetFileName(QString name)
+{
+    loc_file_ = new QFile(name);
+}
+
+void Client::SetHostAddr(QHostAddress addr)
+{
+    host_addr_ = addr;
+    NewConn();
+}

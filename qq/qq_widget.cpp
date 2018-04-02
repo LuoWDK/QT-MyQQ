@@ -143,7 +143,7 @@ void Widget::UserLeft(QString user_name, QString time)
     ui->usr_tbl_widget->removeRow(row_num);
     ui->msg_txt_browser_->setTextColor(Qt::gray);
     ui->msg_txt_browser_->setCurrentFont(QFont("Times New Roman", 10));;
-    ui->msg_txt_browser_->append(tr("%1 lfeft at %2!").arg(user_name).arg(time));
+    ui->msg_txt_browser_->append(tr("%1 left at %2!").arg(user_name).arg(time));
     ui->usr_num_lbl_->setText(tr("Online number: %1").arg(ui->usr_tbl_widget->rowCount()));
 }
 
@@ -200,11 +200,11 @@ void Widget::HasPendingFile(QString user_name, QString srv_addr, QString client_
     QString ip_addr = GetIp();
     if (ip_addr == client_addr)
     {
-        int btn = QMessageBox::information(this, tr("Receive file"), tr("File (%2) from %1: receive?").arg(srv_addr).arg(file_name), QMessageBox::Yes, QMessageBox::No);
+        int btn = QMessageBox::information(this, tr("Receive file"), tr("File %3 from %1 (%2): save?").arg(user_name).arg(srv_addr).arg(file_name), QMessageBox::Yes, QMessageBox::No);
         if (btn == QMessageBox::Yes)
         {
             QString name = QFileDialog::getSaveFileName(0, tr("Save file"), file_name);
-            if (name.isEmpty())
+            if (!name.isEmpty())
             {
                 Client *client = new Client(this);
                 client->SetFileName(name);
@@ -216,17 +216,6 @@ void Widget::HasPendingFile(QString user_name, QString srv_addr, QString client_
             SendMsg(Refuse, srv_addr);
         }
     }
-}
-
-void Client::SetFileName(QString name)
-{
-    loc_file_ = new QFile(name);
-}
-
-void Client::SetHostAddr(QHostAddress addr)
-{
-    host_addr_ = addr;
-    NewConn();
 }
 
 void Widget::on_font_cbx__currentFontChanged(const QFont &f)
